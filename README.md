@@ -4,7 +4,7 @@
 Taking a screenshot constantly and sending it to the printer
 
 ### Dependencies
-`lpr cario xlib`
+`lpr cairo xlib`
 
 ### How to build and run
 #### Compile
