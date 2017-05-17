@@ -3,8 +3,8 @@
 #include <errno.h>
 #include <time.h>
 
-#include <cario.h>
-#include <cario-xlib.h>
+#include <cairo.h>
+#include <cairo-xlib.h>
 
 #include <X11/Xlib.h>
 
