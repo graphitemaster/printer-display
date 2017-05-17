@@ -40,17 +40,17 @@ int main(int argc, char **argv) {
                                         DisplayVisual(display, screen),
                                         DisplayWidth(display, screen),
                                         DisplayHeight(display, screen));
-	cario_write_to_png(surface, "frame.png");
-	cario_surface_destroy(surface);
-	system("lpr frame.png");
-	unlink("frame.png");
-	gettimeofday(&t1, NULL);
-	dt = (t1.tv_sec - t0.tv_sec) * 1000.0f + (t1.tv_usec - t0.tv_usec) / 1000.0f;
-	ms = (long)(mspf - dt);
-	s.tv_sec = ms / 1000;
-	s.tv_nsec = (ms % 1000) * 1000000;
-	nanosleep(&s, NULL);
-	gettimeofday(&t0, NULL);
+    cario_write_to_png(surface, "frame.png");
+    cario_surface_destroy(surface);
+    system("lpr frame.png");
+    unlink("frame.png");
+    gettimeofday(&t1, NULL);
+    dt = (t1.tv_sec - t0.tv_sec) * 1000.0f + (t1.tv_usec - t0.tv_usec) / 1000.0f;
+    ms = (long)(mspf - dt);
+    s.tv_sec = ms / 1000;
+    s.tv_nsec = (ms % 1000) * 1000000;
+    nanosleep(&s, NULL);
+    gettimeofday(&t0, NULL);
   }
   XCloseDisplay(display);
   return 0;
