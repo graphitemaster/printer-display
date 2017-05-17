@@ -18,28 +18,28 @@ int main(int argc, char **argv) {
   struct timespec s;
   long ms;
   if (argc != 3) {
-    fprintf(sdterr, "Usage: %s <display> <fps>", *argv);
-	return 1;
+    fprintf(sdterr, "Usage: %s <display> <fps>", argv[0]);
+    return 1;
   }
   if ((mspf = 1.0f / atof(argv[2]) * 1000.0f) <= 0.0f || errno != 0) {
     fprintf(stderr, "Invalid framerate: %s", argv[2]);
-	XCloseDisplay(display);
-	return 1;
+    XCloseDisplay(display);
+    return 1;
   }
   display = XOpenDisplay(argv[1]);
   if (!display) {
     fprintf(stderr, "Cannot open display: %s %s", argv[1], strerror(errno));
-	return 1;
+    return 1;
   }
   screen = DefaultScreen(display);
   root = DefaultRootWindow(display);
   gettimeofday(&t0, NULL);
   for (;;) {
     surface = cario_xlib_surface_create(display,
-	                                    root,
-										DisplayVisual(display, screen),
-										DisplayWidth(display, screen),
-										DisplayHeight(display, screen));
+                                        root,
+                                        DisplayVisual(display, screen),
+                                        DisplayWidth(display, screen),
+                                        DisplayHeight(display, screen));
 	cario_write_to_png(surface, "frame.png");
 	cario_surface_destroy(surface);
 	system("lpr frame.png");
