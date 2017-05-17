@@ -35,13 +35,13 @@ int main(int argc, char **argv) {
   root = DefaultRootWindow(display);
   gettimeofday(&t0, NULL);
   for (;;) {
-    surface = cario_xlib_surface_create(display,
+    surface = cairo_xlib_surface_create(display,
                                         root,
                                         DisplayVisual(display, screen),
                                         DisplayWidth(display, screen),
                                         DisplayHeight(display, screen));
-    cario_write_to_png(surface, "frame.png");
-    cario_surface_destroy(surface);
+    cairo_write_to_png(surface, "frame.png");
+    cairo_surface_destroy(surface);
     system("lpr frame.png");
     unlink("frame.png");
     gettimeofday(&t1, NULL);
